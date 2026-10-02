@@ -1,0 +1,170 @@
+:root {
+  --vermelho: #ee4a5c;
+  --laranja: #f47f5a;
+  --amarelo: #f7cd4f;
+  --texto: #2b2d33;
+  --borda: #3a3d45;
+  --placeholder: #8b8e97;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+  color: var(--texto);
+  background: linear-gradient(135deg, var(--vermelho) 0%, var(--laranja) 55%, var(--amarelo) 100%);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: hidden; /* evita barra de rolagem durante a descida do cartão */
+}
+
+/* Cartão branco */
+.card {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 40px 36px 44px;
+  box-shadow: 0 18px 50px rgba(120, 30, 30, 0.25);
+  animation: descer 1.8s cubic-bezier(0.22, 0.8, 0.3, 1) both;
+}
+
+/* Desce lentamente de cima da tela até o centro */
+@keyframes descer {
+  from {
+    transform: translateY(-100vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 26px;
+}
+
+.campo {
+  margin-bottom: 14px;
+}
+
+label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+/* Campo em formato de pílula com ícone */
+.entrada {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 14px;
+  border: 2px solid var(--borda);
+  border-radius: 999px;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.entrada svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--vermelho);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.entrada:focus-within {
+  border-color: var(--vermelho);
+  box-shadow: 0 0 0 4px rgba(238, 74, 92, 0.18);
+}
+
+.entrada input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--texto);
+}
+
+.entrada input::placeholder {
+  color: var(--placeholder);
+  font-weight: 500;
+}
+
+/* Remove as setinhas do campo numérico */
+.entrada input[type="number"]::-webkit-outer-spin-button,
+.entrada input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.entrada input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Botão com gradiente */
+.botao {
+  display: block;
+  width: 100%;
+  height: 46px;
+  margin-top: 28px;
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--vermelho), var(--amarelo));
+  background-size: 140% 100%;
+  background-position: 0 0;
+  transition: background-position 0.4s, transform 0.15s, box-shadow 0.2s;
+}
+
+.botao:hover {
+  background-position: 100% 0;
+  box-shadow: 0 8px 18px rgba(238, 74, 92, 0.35);
+}
+
+.botao:active {
+  transform: scale(0.98);
+}
+
+.botao:focus-visible {
+  outline: 3px solid var(--texto);
+  outline-offset: 3px;
+}
+
+/* Quem prefere menos movimento não vê a descida */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    animation: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .card {
+    padding: 32px 22px 36px;
+  }
+}
