@@ -4,7 +4,7 @@ Formulário web responsivo que registra depósitos (nome, e-mail e valor) em tem
 
 🔗 **Demo online:** https://itsmeeduu.github.io/formulario-firebase/
 
-![Tela do formulário](img/print.png)
+
 
 ## ✨ Funcionalidades
 
